@@ -31,12 +31,5 @@
 
             return await this.context.SaveChangesAsync();
         }
-
-        [Authorize]
-        [Route(nameof(Test))]
-        public ActionResult Test()
-        {
-            return this.Ok("Testa bachka");
-        }
     }
 }
