@@ -11,6 +11,7 @@
             using (var services = app.ApplicationServices.CreateScope())
             {
                 var dbContext = services.ServiceProvider.GetService<FsDbContext>();
+               // dbContext.Database.EnsureDeleted();
                 dbContext.Database.EnsureCreated();
             }
         }
