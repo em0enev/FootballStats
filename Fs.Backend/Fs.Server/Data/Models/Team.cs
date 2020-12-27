@@ -1,6 +1,5 @@
 ﻿namespace Fs.Server.Data.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -12,7 +11,7 @@
         public string Name { get; set; }
 
         [Required]
-        public Guid LeagueId { get; set; }
+        public int LeagueId { get; set; }
         public League League { get; set; }
 
         public IEnumerable<Player> Players { get; } = new HashSet<Player>();
