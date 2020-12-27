@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-lg-4">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="d-flex justify-content-center">
+          <h1>Login</h1>
+        </div>
+        <div class="form-group">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" formControlName="username">
+        </div>
+        <div *ngIf="username.touched && username.errors?.required" class="alert alert-danger">
+          This field is required!
+        </div>
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" formControlName="password">
+        </div>
+        <div *ngIf="password.touched && password.errors?.required" class="alert alert-danger">
+          This field is required!
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
