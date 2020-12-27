@@ -5,6 +5,7 @@
     using Fs.Server.Models.League;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class LeagueController : ApiController
@@ -20,6 +21,16 @@
         [Route(nameof(CreateLeague))]
         public async Task<ActionResult<int>> CreateLeague(CreateLeagueRequestModel model)
         {
+            var leagueFromDb = context
+                .Leagues
+                .Where(x => x.Name == model.Name)
+                .FirstOrDefault();
+
+            if (leagueFromDb != null)
+            {
+                return Conflict("The league already exist !");
+            }
+
             var league = new League
             {
                 Name = model.Name
