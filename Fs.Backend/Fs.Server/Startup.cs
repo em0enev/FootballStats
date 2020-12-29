@@ -2,6 +2,7 @@ namespace Fs.Server
 {
     using Fs.Server.Data;
     using Fs.Server.Infrastructure;
+    using Fs.Server.Services.Identity;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,8 @@ namespace Fs.Server
                 .AddIdentity()
                 .AddJwtAuthentication(services.GetApplicationSettings(this.Configuration))
                 .AddControllers();
+
+            services.AddSingleton<IIdentityService, IdentityService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -38,15 +41,15 @@ namespace Fs.Server
             app.
                 UseRouting()
                 .UseCors(opt => opt
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader())
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader())
                 .UseAuthentication()
                 .UseAuthorization()
                 .UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            })
+                    {
+                        endpoints.MapControllers();
+                    })
                 .ApplyMigrations();
         }
     }
