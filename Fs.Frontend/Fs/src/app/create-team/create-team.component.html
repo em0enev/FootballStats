@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <form [formGroup]="teamForm" (ngSubmit)="create()">
+          <div class="d-flex justify-content-center">
+            <h1>Create Team</h1>
+          </div>
+          <div class="form-group">
+            <label for="teamName" class="form-label">Team name</label>
+            <input type="text" class="form-control" formControlName="teamName">
+          </div>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
