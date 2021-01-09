@@ -21,4 +21,8 @@ export class CreateTeamComponent implements OnInit {
   create(){
     console.log(this.teamForm.value)
   }
+
+  get teamName(){
+    return this.teamForm.get('teamName')
+  }
 }

@@ -18,8 +18,8 @@
         }
 
         [Authorize]
-        [Route(nameof(CreateTeam))]
-        public async Task<ActionResult<int>> CreateTeam(CreateTeamRequestModel model)
+        [Route(nameof(Create))]
+        public async Task<ActionResult<int>> Create(CreateTeamRequestModel model)
         {
             var leagueFromDb = this.context
                 .Leagues
