@@ -9,6 +9,8 @@ import { RegisterComponent } from './register/register.component';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateTeamComponent } from './create-team/create-team.component'
+import { TeamService } from './services/team.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { CreateTeamComponent } from './create-team/create-team.component'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, TeamService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

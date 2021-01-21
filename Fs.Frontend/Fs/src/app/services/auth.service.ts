@@ -7,8 +7,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  private loginPath = environment.apiUrl+'Identity/login'
-  private registerPath = environment.apiUrl+'Identity/register'
+  private identityPath = 'Identity';
+  private loginPath = environment.apiUrl + this.identityPath +'/login'
+  private registerPath = environment.apiUrl + this.identityPath +'/register'
 
   constructor(private http: HttpClient) { }
 
@@ -28,5 +29,13 @@ export class AuthService {
 
   getToken(){
     return localStorage.getItem('token')
+  }
+
+  isAuthenticated(){
+    if(this.getToken()){
+      return true;
+    }
+
+    return false;
   }
 }
